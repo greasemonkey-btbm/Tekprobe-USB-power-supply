@@ -1,0 +1,19 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: tekprobe.PcbDoc   14-May-21  18:54:20
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : tekprobe.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      12mil (0.3mm)                                             Round             33        PTH        0.00inch (0.00mm)
+T2      16mil (0.399mm)                                           Round             59        PTH        0.00inch (0.00mm)
+T3      36mil (0.919mm)                                           Round             4         PTH        0.00inch (0.00mm)
+T4      43mil (1.1mm)                                             Round             9         PTH        0.00inch (0.00mm)
+T5      91mil (2.301mm)                                           Round             2         PTH        0.00inch (0.00mm)
+T6      205mil (5.199mm)                                          Round             4         PTH        0.00inch (0.00mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              111
+
+Total Processing Time (hh:mm:ss) : 00:00:00

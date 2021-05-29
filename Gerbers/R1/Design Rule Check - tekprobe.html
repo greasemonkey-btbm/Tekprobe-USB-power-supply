@@ -1,0 +1,443 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">05-May-21</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:35:20</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc" class="file"><acronym title="C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc">C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">33</td></tr>
+</table>
+</td>
+</table><a name="IDIPYQSFINR1BACGTEW15JCVRQPLV3HFWIZRDXUKJIS3VFZ2T3SPLN"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3YADZXT0QAIDFPHK3WI5BZGJYOKMM1TATIGUPKBPGSS3R5NFLPI">Clearance Constraint (Gap=5mil) (inPolygon),((OnLayer('Keep-Out Layer')))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPMKEIZET5C1OBDAXEKTIRQ4PKCNHHFE45EW50ETCJDOOJGYW21J">Clearance Constraint (Gap=6mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDW4GW5SCVNWPPISGFLIACIB5GC1VLIFOIZFNWKN3V1UVY2WYFGVD">Short-Circuit Constraint (Allowed=No) (not InNet('No Net')),(not InNet('No Net'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPG0EGGGH0AL4CKHYVY454FS2IETTEOW2VKJLRKLUPOTY5VIKT3KM">Short-Circuit Constraint (Allowed=Yes) (Not InAnyNet),(Not InAnyNet)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0NWXG2HITUZSGEI5LUT2OLCYWDYOGNMXW2N0PSHRHJDGQ40RSWYH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGKLJILOPPEOQISMNNZT3GJOANCM3AZTT1YIK2CX4Q0EXT52TPLC">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDANVK5BCJQFBYKCPMXUUEWSI52GQQAWCRAZHCI1GJ2K3FJPO3SRPF">Width Constraint (Min=6mil) (Max=1000mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRDSONRIFTLV0LY1L3EE3QXFKUP12K3ZO1ABLDGFAI1SRHWC2K3AC">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLDZIQEUW3VFAHJCWLNVGMWQGJMT2K5MFPQVC2SEF3TC0VJHSS4PN">Hole Size Constraint (Min=11.811mil) (Max=1000mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDYCKP4UIBSVVXOX1VEQLCIAU2RDJSWAMIR0SWMZHKRVQBMCXKSNQO">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDU5QV5PIODVMFBHZMV0E2FRK2EEBUXYSDFLB4G4J25UIHXKH0XI2C">Minimum Solder Mask Sliver (Gap=4.5mil) (All),(All)</a></td>
+<td class="column2">28</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZLKLU0A1JNADJNGDKI3ZCKZFHKGEG0QEBBGBQOIN2FUWPHJ0DBNJ">Silk To Solder Mask (Clearance=5mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0MOL1SRH1MCNIZDZV1NP0MGIPBYCBBU2S41DSCG5SCS1IU0D1ZLN">Silk to Silk (Clearance=5mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3NNCIGG3IURWCPZ4PNIYP3RZJNCD3KIQ4Y2HK5JQ32TTNYK1ZEHI">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSAB5QFARLJDTOI00W2ZNAVXZ0JQIEO2OWNUZDWDHSCIAQJ3LKE0O">Height Constraint (Min=0mil) (Max=5000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">33</td>
+</tr>
+</table><br><a name="ID0NWXG2HITUZSGEI5LUT2OLCYWDYOGNMXW2N0PSHRHJDGQ40RSWYH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1183.955mil|Location2.X=1403.64mil|Location1.Y=2393.819mil|Location2.Y=2587.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1183.955mil|Location2.X=1403.64mil|Location1.Y=2393.819mil|Location2.Y=2587.913mil|Absolute=True">Un-Routed Net Constraint: Net 0V Between Track (259.134mil,1493.819mil)(259.134mil,1525.315mil) on Top Layer And Pad U3-5(278.819mil,1487.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDYCKP4UIBSVVXOX1VEQLCIAU2RDJSWAMIR0SWMZHKRVQBMCXKSNQO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole To Hole Clearance (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2282.385mil|Location2.X=2293.635mil|Location1.Y=1449.69mil|Location2.Y=1460.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2282.385mil|Location2.X=2293.635mil|Location1.Y=1449.69mil|Location2.Y=1460.94mil|Absolute=True">Hole To Hole Clearance Constraint: (7.874mil &lt; 10mil) Between Via (1251.378mil,455.315mil) from Top Layer to Bottom Layer And Via (1275mil,455.315mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2282.385mil|Location2.X=2293.635mil|Location1.Y=1489.06mil|Location2.Y=1500.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2282.385mil|Location2.X=2293.635mil|Location1.Y=1489.06mil|Location2.Y=1500.31mil|Absolute=True">Hole To Hole Clearance Constraint: (7.874mil &lt; 10mil) Between Via (1251.378mil,494.685mil) from Top Layer to Bottom Layer And Via (1275mil,494.685mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2306.007mil|Location2.X=2317.257mil|Location1.Y=1449.69mil|Location2.Y=1460.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2306.007mil|Location2.X=2317.257mil|Location1.Y=1449.69mil|Location2.Y=1460.94mil|Absolute=True">Hole To Hole Clearance Constraint: (7.874mil &lt; 10mil) Between Via (1275mil,455.315mil) from Top Layer to Bottom Layer And Via (1298.622mil,455.315mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2306.007mil|Location2.X=2317.257mil|Location1.Y=1489.06mil|Location2.Y=1500.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2306.007mil|Location2.X=2317.257mil|Location1.Y=1489.06mil|Location2.Y=1500.31mil|Absolute=True">Hole To Hole Clearance Constraint: (7.874mil &lt; 10mil) Between Via (1275mil,494.685mil) from Top Layer to Bottom Layer And Via (1298.622mil,494.685mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDU5QV5PIODVMFBHZMV0E2FRK2EEBUXYSDFLB4G4J25UIHXKH0XI2C"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=4.5mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1520.253mil|Location2.X=1526.003mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1520.253mil|Location2.X=1526.003mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-1(500.079mil,1487.913mil) on Top Layer And Pad U2-15(530mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1603.265mil|Location2.X=1609.015mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1603.265mil|Location2.X=1609.015mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-10(578.819mil,1602.087mil) on Top Layer And Pad U2-16(600.276mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1583.639mil|Location2.X=1589.389mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1583.639mil|Location2.X=1589.389mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-11(559.134mil,1602.087mil) on Top Layer And Pad U2-15(530mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1567.891mil|Location2.X=1573.641mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1567.891mil|Location2.X=1573.641mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-12(539.449mil,1602.087mil) on Top Layer And Pad U2-15(530mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1548.206mil|Location2.X=1553.956mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1548.206mil|Location2.X=1553.956mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-13(519.764mil,1602.087mil) on Top Layer And Pad U2-15(530mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1520.253mil|Location2.X=1526.003mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1520.253mil|Location2.X=1526.003mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-14(500.079mil,1602.087mil) on Top Layer And Pad U2-15(530mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1548.206mil|Location2.X=1553.956mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1548.206mil|Location2.X=1553.956mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-15(530mil,1545mil) on Top Layer And Pad U2-2(519.764mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1567.891mil|Location2.X=1573.641mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1567.891mil|Location2.X=1573.641mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-15(530mil,1545mil) on Top Layer And Pad U2-3(539.449mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1574.584mil|Location2.X=1580.334mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1574.584mil|Location2.X=1580.334mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-15(530mil,1545mil) on Top Layer And Pad U2-4(559.134mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1603.265mil|Location2.X=1609.015mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1603.265mil|Location2.X=1609.015mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-16(600.276mil,1545mil) on Top Layer And Pad U2-5(578.819mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1626.946mil|Location2.X=1632.696mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1626.946mil|Location2.X=1632.696mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-16(600.276mil,1545mil) on Top Layer And Pad U2-6(598.504mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1633.639mil|Location2.X=1639.389mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1633.639mil|Location2.X=1639.389mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-16(600.276mil,1545mil) on Top Layer And Pad U2-7(618.189mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.178mil|Location2.X=1646.928mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.178mil|Location2.X=1646.928mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-16(600.276mil,1545mil) on Top Layer And Pad U2-8(618.189mil,1602.087mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1626.946mil|Location2.X=1632.696mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1626.946mil|Location2.X=1632.696mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U2-16(600.276mil,1545mil) on Top Layer And Pad U2-9(598.504mil,1602.087mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1220.253mil|Location2.X=1226.003mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1220.253mil|Location2.X=1226.003mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-1(200.079mil,1487.913mil) on Top Layer And Pad U3-15(230mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1303.265mil|Location2.X=1309.015mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1303.265mil|Location2.X=1309.015mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-10(278.819mil,1602.087mil) on Top Layer And Pad U3-16(300.276mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1283.639mil|Location2.X=1289.389mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1283.639mil|Location2.X=1289.389mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-11(259.134mil,1602.087mil) on Top Layer And Pad U3-15(230mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1267.891mil|Location2.X=1273.641mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1267.891mil|Location2.X=1273.641mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-12(239.449mil,1602.087mil) on Top Layer And Pad U3-15(230mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1248.206mil|Location2.X=1253.956mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1248.206mil|Location2.X=1253.956mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-13(219.764mil,1602.087mil) on Top Layer And Pad U3-15(230mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1220.253mil|Location2.X=1226.003mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1220.253mil|Location2.X=1226.003mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-14(200.079mil,1602.087mil) on Top Layer And Pad U3-15(230mil,1545mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1248.206mil|Location2.X=1253.956mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1248.206mil|Location2.X=1253.956mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-15(230mil,1545mil) on Top Layer And Pad U3-2(219.764mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1267.891mil|Location2.X=1273.641mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1267.891mil|Location2.X=1273.641mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-15(230mil,1545mil) on Top Layer And Pad U3-3(239.449mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1274.584mil|Location2.X=1280.334mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1274.584mil|Location2.X=1280.334mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-15(230mil,1545mil) on Top Layer And Pad U3-4(259.134mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1303.265mil|Location2.X=1309.015mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1303.265mil|Location2.X=1309.015mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-16(300.276mil,1545mil) on Top Layer And Pad U3-5(278.819mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1326.946mil|Location2.X=1332.696mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1326.946mil|Location2.X=1332.696mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-16(300.276mil,1545mil) on Top Layer And Pad U3-6(298.504mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1333.639mil|Location2.X=1339.389mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1333.639mil|Location2.X=1339.389mil|Location1.Y=2503.511mil|Location2.Y=2509.261mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-16(300.276mil,1545mil) on Top Layer And Pad U3-7(318.189mil,1487.913mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1341.178mil|Location2.X=1346.928mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1341.178mil|Location2.X=1346.928mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-16(300.276mil,1545mil) on Top Layer And Pad U3-8(318.189mil,1602.087mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1326.946mil|Location2.X=1332.696mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Y\007 - BTB\007 - 013 Grease monkey\0027 - Powering the ADA400A\PCB\Tekprobe_psu\tekprobe.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1326.946mil|Location2.X=1332.696mil|Location1.Y=2580.739mil|Location2.Y=2586.489mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.299mil &lt; 4.5mil) Between Pad U3-16(300.276mil,1545mil) on Top Layer And Pad U3-9(298.504mil,1602.087mil) on Top Layer [Top Solder] Mask Sliver [2.299mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
