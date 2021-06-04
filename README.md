@@ -1,5 +1,6 @@
 # Tekprobe USB power supply
  A USB power supply for the Tektronix Tekprobe interface
+ https://btbm.ch/a-usb-power-supply-for-the-tekprobe-interface/
 
 Original circuit posted by Jay_Diddy_B on the EEVBLOG forum
 https://www.eevblog.com/forum/projects/tektronix-tekprobe-power-supply-for-agilent-rigol-and-other-oscilloscopes/
